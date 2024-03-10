@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>2024开发与游戏环境配置</title>
+      <link href="/2024/03/09/2024%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B8%B8%E6%88%8F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+      <url>/2024/03/09/2024%E5%BC%80%E5%8F%91%E4%B8%8E%E6%B8%B8%E6%88%8F%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<div class="tip info"><p>本学期配置了一台台式机，同时手上还有老的笔记本，为了兼顾编程开发和游戏。因此将台式机安装win11专业版，笔记本刷成ubuntu22.04，并将详细配置记录。</p></div><h1 id="台式机配置"><a href="#台式机配置" class="headerlink" title="台式机配置"></a>台式机配置</h1><p><a href="https://chenzivan-blogpic.oss-cn-shanghai.aliyuncs.com/mmexport1710038940295.png">https://chenzivan-blogpic.oss-cn-shanghai.aliyuncs.com/mmexport1710038940295.png</a></p><h2 id="选购配件的一些教训"><a href="#选购配件的一些教训" class="headerlink" title="选购配件的一些教训"></a>选购配件的一些教训</h2><ol><li><p>主板不能丐，要和其他配件搭配</p><p> 原先选用的板子是华硕B550M-K，究极丐中丐御三家的板子，到手后装机时发现内存有问题，可能是CPU的内存控制器或者主板的内存插槽有问题。对于这种旧平台库存货踩到这种大雷也很正常。同时这块板子也没有灯光接口，于是不想和商家送修扯皮，直接退货。然后选择了技嘉小雕B550M的板U套装，令人震惊的是U还不是散片居然是盒装。</p></li><li><p>机箱</p><p> 考虑到这台主机在将来会有运输需求，因此选取目标是小体积的手提机箱。不过我只考虑了便携性，却没有考虑理线，这个不带背板的机箱理线的难度实在太高，最后也是把线乱糟糟的塞到了机箱内。</p></li><li><p>电源</p><p> 考虑到5600和4060的组合功率不是很大，因此买了利民金牌500w直出。整套配置都是白色系，因此电源也多花了几十上了白色系。不过装机完看整体效果，感觉还不如整个黑色系上个全模组省的看着这么多多余的线烦。</p></li></ol><blockquote><p>最后效果</p></blockquote><div class="img-wrap"><div class="img-bg"><img class="img" src="https://chenzivan-blogpic.oss-cn-shanghai.aliyuncs.com/IMG_20240310_151522.jpg" alt="这个乱糟糟的线材，真是没眼看啊"/></div><span class="image-caption">这个乱糟糟的线材，真是没眼看啊</span></div><h1 id="笔记本重装系统"><a href="#笔记本重装系统" class="headerlink" title="笔记本重装系统"></a>笔记本重装系统</h1><h2 id="重装系统背景"><a href="#重装系统背景" class="headerlink" title="重装系统背景"></a>重装系统背景</h2><ol><li>新机预想中主要用作娱乐用途，同时也不想闲置原来的笔记本，于是把把笔记本刷成ubuntu22.04，用作主力开发环境;新机通过ssh在校园网内连接到开发机，这样可以避免在两个设备重复配置环境。新机配置IDEA和VsCode即可充分满足日常开发需求</li><li>笔记本的存储为512GB，在原先的win系统下显得很臃肿。将个人数据备份到学校云盘上后重装linux系统，空间主要用来配置一些开发环境和存放源代码（备份数据时发现原先写代码时仓库管理做的不是很好）</li></ol><h2 id="搞笑的网络问题"><a href="#搞笑的网络问题" class="headerlink" title="搞笑的网络问题"></a>搞笑的网络问题</h2><div class="tip warning faa-horizontal animated"><p>在ubuntu安装docker后发现通过校园网内的ip地址两台设备怎么也不能远程访问</p></div><h3 id="问题原因及解决"><a href="#问题原因及解决" class="headerlink" title="问题原因及解决"></a>问题原因及解决</h3><p>两台设备在校园网内分配到的地址分别是 <code>172.17.xxx.xxx</code> 和 <code>172.31.xxx.xxx</code> ，而docker通过脚本方式默认安装后虚拟网卡的地址是 <code>172.17.0.1</code>， 这个网段和设备在校园网内的ip地址发生网段冲突，查询本机路由表后也发现发向<code>172.17.xxx.xxx</code>设备的数据包全部都通过docker的虚拟网卡转发；通过添加<code>/etc/docker/daemon.json</code>文件修改docker网卡的ip地址后成功解决问题</p><div class="img-wrap"><div class="img-bg"><img class="img" src="https://chenzivan-blogpic.oss-cn-shanghai.aliyuncs.com/IMG_20240309_113544.jpg"/></div></div>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客快速搭建</title>
+      <link href="/2024/03/03/%E5%8D%9A%E5%AE%A2%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/"/>
+      <url>/2024/03/03/%E5%8D%9A%E5%AE%A2%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="参考博客"><a href="#参考博客" class="headerlink" title="参考博客"></a>参考博客</h1><a class="site-card" href="https://blog.csdn.net/mjh1667002013/article/details/129290903"><div class="img"><img src="https://chenzivan-blogpic.oss-cn-shanghai.aliyuncs.com/img/202403031450684.png"/></div><div class="info"><img src="https://profile-avatar.csdnimg.cn/429cbff3fe2e461890feac867448b564_mjh1667002013.jpg!1"/><span class="title">CoolTiger</span><span class="desc">Hexo搭建Butterfly主题并快速美化</span></div></a><h1 id="安装hexo并设定Butterfly主题"><a href="#安装hexo并设定Butterfly主题" class="headerlink" title="安装hexo并设定Butterfly主题"></a>安装hexo并设定Butterfly主题</h1><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line">hexo init Blog</span><br><span class="line"><span class="built_in">cd</span> Blog</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 寄术派 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 建站 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>鼓楼周边闲步</title>
+      <link href="/2024/03/03/%E9%BC%93%E6%A5%BC%E5%91%A8%E8%BE%B9%E9%97%B2%E6%AD%A5/"/>
+      <url>/2024/03/03/%E9%BC%93%E6%A5%BC%E5%91%A8%E8%BE%B9%E9%97%B2%E6%AD%A5/</url>
+      
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉，这个密码看着不太对，请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="2074f5d1445996c8dbd0cd7491bd22a615a31fde17eb761ea02be5119f9bd5f6">a65e53ebafabc2f22786215c2e72d63bdebb16b8c303ddf0c3abc13a3d9dbc222ef9828e75b12a05998dc5bca50a3fe121fd791c3b47a6eb858bd0d87b6ae71079693086512957b99e3961f8e7742d1e7435eca541cb35a34bd68048f0d918fb819f233cea98427323f6de4b4f869ed645addc65541749f6c74ec7d87beca2e809e6084f71923e3e49154d7956ac885a2c7c583174648d2ff87a2ae7b40e3284ac34b4248e3b06c7285e1c459b30d802ed5a89f7557efceb666665409c9a04d82c44dbde41abfac03ac444af889742a49a0cbb220f59282efd0768e69626bcc8cac466e0c8dcd7285efaabc9d78244a543a506ddd16ca1c300027ae94f650d8122e4caac51dd692bc1d0a2b9e64d4567af054ed86359223bebbc01de06aee1ee2b7abee91b103fda5288265a6b1752d7cd1f44cddca7678dda53760aa83daef1ceba730dd59f392bc503bfde1d43a3751f6f4faa0614447328f35941f97ffecbcce5887f68f36f861fc8e801bb52c2ee493ba24b40151b21ac816fdabd203c3a0f25528a07b59c6eda0e168504c6ff7b8c5465706634b7261668325f037c6f5b7009bc0b0dae1ca690fd825b7f1acc2f28895f31f0eb7bbddb4d9a483689fc2ad4111541ea9a4708214f02e84eea5eb57525020c3c72d38542cf8933cb7ee01905f8c4bc6226945fc17c31b4f69658348957856cd2ca3ff20b6ad1b9997f7c3dcadc3e2e30e591c910d6a7ffa546835882337475c044d4730b179b5bfa53679c2422b1f47c440ccab7d2b415f1d84e4c009ccf8be1f587ae13eddffd7777f1ca5cfacd0912fbf5c749bca0dc26cbbad84197b4c728d0d5a97cb22e37749c3f9e47339128bf4d0dcfe1aa0e487babe9fdb148cd807d3d725666d99898aa7cc26319a25a546775abb2a28f39521e239ecaf3059ad780ac964ee537bdc91783800e333abb211d723ae13336d9836d9021333f2f07cb43a913c1494ff96e442797378211c49fe07b98c90d13b704f66c087666b991359bbf42f25579dd99bd2d975c68e3cb0cbd6c1e8722fc8b18bb7b9c57eb89562a248aacfbf253b16bed03335846e2ef0f077e57d94c6dc937749cbb2ebed0244b17e8e45f869f82060e29962eefd86d60f2a21531328905e6a9dd8a74df5bf6ea5a2267baaee111354f572737d4af13db1100c45fc96985741aeae8fb17d4385be7c954f26bd9ea8a9b3307d41996d2adfe890cac857920af8c8d0184f712b1170ea21e0be847b631e3a60e1f812faaeb5535f1f711d954177bdf65ac72adbe0f5ee263aefc9a2ef2deb967efa5d61cc0d3c92025b04ce408f8fb22ec73c726f0b463097045da97430676c6b5906c61deb4b716328743710822710146c80c0aedd34e9a6ff5fd7fa3450a1d60d99d74cfcc3fe892f7040972a5baba1880131835080b150cf1791a582e88cd9bb2d58f41593cf930c200a6e8293f9d39d06b2f3ec6d09385e2309e0c7b40746dbbfa1a90a6954b93a0023b8618eade1f2d57a8494720210bf9f8128350da1d1e</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">您好，此处需要密码. 如果您对该文章很感兴趣，请私戳我获取密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 随便逛逛 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 鼓楼周边 </tag>
+            
+            <tag> 闲步 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>建站日志</title>
+      <link href="/2024/03/02/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/"/>
+      <url>/2024/03/02/%E5%BB%BA%E7%AB%99%E6%97%A5%E5%BF%97/</url>
+      
+        <content type="html"><![CDATA[<div class="timeline  pink"><div class='timeline-item headline'><div class='timeline-item-title'><div class='item-circle'><p>2024 </p></div></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>03-01</p></div></div><div class='timeline-item-content'><ol><li>使用Hexo + ButterFly主题进行博客的搭建</li><li>使用hexo原生的deploy插件将博客部署到Github Pages</li><li>使用<code>hexo-generator-search</code>集成本地搜索功能</li><li>使用<code>hexo-lazyload-image</code>集成懒加载功能</li><li>使用<code>hexo-wordcount</code>集成字数统计功能</li><li>使用<code>PicGo</code> + 阿里云OSS进行图床的搭建</li></ol></div></div><div class='timeline-item'><div class='timeline-item-title'><div class='item-circle'><p>03-02</p></div></div><div class='timeline-item-content'><ol><li>使用<a href="https://widget.qweather.com/create-simple">和风天气</a>插件在博客顶部放置天气小插件</li><li>美化页脚，添加网站运行计时器</li><li>使用<a href="https://twikoo.js.org/quick-start.html">twikoo</a>集成评论系统，采用了Hugging Face的部署方式</li></ol></div></div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 寄术派 </category>
+          
+          <category> 建站 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 建站 </tag>
+            
+            <tag> 博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>为什么要创建这个博客</title>
+      <link href="/2024/03/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2/"/>
+      <url>/2024/03/01/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA%E8%BF%99%E4%B8%AA%E5%8D%9A%E5%AE%A2/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>记录生活，记录成长</p></blockquote><h1 id="易逝的时间"><a href="#易逝的时间" class="headerlink" title="易逝的时间"></a>易逝的时间</h1><p>想起初中班主任说过的话，她鼓励我们多写写日记记录自己的人生，可惜那时的我是一个迟笨且懒惰的男孩，终究胡乱摆弄了几天就放弃了。忙忙碌碌过了高中和大学，到了大四最清闲的一段时间，回想过去，经历的种种早已模糊在记忆的流光中。特别是在失去了重视的真物后，再去回首那段珍贵的记忆却悲哀的发现，有些细节早已模糊了。为了抵御流沙一般的时光，特意建此博客记录生命中美好且重要的时刻。</p><h1 id="成长的脚印"><a href="#成长的脚印" class="headerlink" title="成长的脚印"></a>成长的脚印</h1><p><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=631796923&bvid=BV1xb4y1673z&cid=373988655&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"> </iframe></div><br>我的博客头像是游戏王卡牌游戏当中的角色洗衣龙女仆，玩家们通常把她叫做小蓝。小蓝虽然是个洗衣龙女，但是她总是做不好自己的本质工作，总是冒冒失失地出大糗。正如B站UP主@有翼幻兽奇美拉在他的视频中所说到的那样，冒失的小蓝正如即将迈入社会的我们一样，虽尽力做好自己的事却总会事与愿违，不知不觉就把事情搞砸了。不过迟早有一天，初入社会感到迷茫和彷徨的冒失小蓝们也会长大，会像自己的姐妹们一样化作巨龙，成为可靠的大人。所以我写了这个博客，希望记录我的成长，也希望能帮助到和我一样迷茫的冒失小蓝们，愿我们都能成为可靠的大人!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 碎碎念 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 建站 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
